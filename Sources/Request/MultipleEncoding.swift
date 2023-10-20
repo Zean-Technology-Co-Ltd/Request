@@ -9,6 +9,8 @@ import Alamofire
 import Foundation
 
 public struct MultipleEncoding: ParameterEncoding {
+    public init() {}
+    
     public func encode(_ urlRequest: URLRequestConvertible, with parameters: Parameters?) throws -> URLRequest {
         var params = [String: Any]()
         if parameters != nil {
