@@ -25,7 +25,7 @@ public typealias ResultWrapper<T> = Result<T, RequestError>
 public typealias ResultStream<T> = Observable<ResultWrapper<T>>
 
 
-final class Request<Target: RequestTargetType>: MoyaProvider<Target> {
+public final class Request<Target: RequestTargetType>: MoyaProvider<Target> {
     
     public init(plugins: [PluginType] = []) {
         let plugin = Plugin()

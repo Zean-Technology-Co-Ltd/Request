@@ -8,9 +8,8 @@
 import Alamofire
 import Foundation
 
-struct MultipleEncoding: ParameterEncoding {
-    
-    func encode(_ urlRequest: URLRequestConvertible, with parameters: Parameters?) throws -> URLRequest {
+public struct MultipleEncoding: ParameterEncoding {
+    public func encode(_ urlRequest: URLRequestConvertible, with parameters: Parameters?) throws -> URLRequest {
         var params = [String: Any]()
         if parameters != nil {
             params = parameters!
@@ -25,16 +24,16 @@ struct MultipleEncoding: ParameterEncoding {
     }
 }
 
-struct ReplaceQuestionMarkPostEncoding: ParameterEncoding {
-    func encode(_ urlRequest: URLRequestConvertible, with parameters: Parameters?) throws -> URLRequest {
+public struct ReplaceQuestionMarkPostEncoding: ParameterEncoding {
+    public func encode(_ urlRequest: URLRequestConvertible, with parameters: Parameters?) throws -> URLRequest {
         var request = try JSONEncoding().encode(urlRequest, with: parameters)
         request.url = URL(string: request.url!.absoluteString.replacingOccurrences(of: "%3F", with: "?"))
         return request
     }
 }
 
-struct ReplaceQuestionMarkGetEncoding: ParameterEncoding {
-    func encode(_ urlRequest: URLRequestConvertible, with parameters: Parameters?) throws -> URLRequest {
+public struct ReplaceQuestionMarkGetEncoding: ParameterEncoding {
+    public func encode(_ urlRequest: URLRequestConvertible, with parameters: Parameters?) throws -> URLRequest {
         var request = try URLEncoding().encode(urlRequest, with: parameters)
         request.url = URL(string: request.url!.absoluteString.replacingOccurrences(of: "%3F", with: "?"))
         return request
