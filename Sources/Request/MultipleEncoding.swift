@@ -25,6 +25,8 @@ public struct MultipleEncoding: ParameterEncoding {
 }
 
 public struct ReplaceQuestionMarkPostEncoding: ParameterEncoding {
+    public init() {}
+    
     public func encode(_ urlRequest: URLRequestConvertible, with parameters: Parameters?) throws -> URLRequest {
         var request = try JSONEncoding().encode(urlRequest, with: parameters)
         request.url = URL(string: request.url!.absoluteString.replacingOccurrences(of: "%3F", with: "?"))
@@ -33,6 +35,8 @@ public struct ReplaceQuestionMarkPostEncoding: ParameterEncoding {
 }
 
 public struct ReplaceQuestionMarkGetEncoding: ParameterEncoding {
+    public init() {}
+    
     public func encode(_ urlRequest: URLRequestConvertible, with parameters: Parameters?) throws -> URLRequest {
         var request = try URLEncoding().encode(urlRequest, with: parameters)
         request.url = URL(string: request.url!.absoluteString.replacingOccurrences(of: "%3F", with: "?"))
