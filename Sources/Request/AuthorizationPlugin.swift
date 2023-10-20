@@ -22,7 +22,7 @@ public protocol RequestAuthorizationPluginStaticFetchable {
     var authorizationPlugin: RequestAuthorizationPlugin { get }
 }
 
-public  protocol RequestAuthorizationPluginUpdate {
+public protocol RequestAuthorizationPluginUpdate {
     func updatePlugin(token: String?)
 }
 
@@ -60,8 +60,7 @@ extension RequestAuthorizationPluginUpdate {
 }
 
 extension RequestUnAuthorisedProcess {
-    
-    func register(unAuthorisedProcessor: RequestUnAuthorisedProcess) {
+    public func register(unAuthorisedProcessor: RequestUnAuthorisedProcess) {
         RequestAuthorizationPlugin.default.unAuthorisedProcesser = unAuthorisedProcessor
     }
 }
