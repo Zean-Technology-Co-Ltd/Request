@@ -22,12 +22,12 @@ public protocol RequestAuthorizationPluginStaticFetchable {
     var authorizationPlugin: RequestAuthorizationPlugin { get }
 }
 
-protocol RequestAuthorizationPluginUpdate {
+public  protocol RequestAuthorizationPluginUpdate {
     func updatePlugin(token: String?)
 }
 
 /// 外部处理认证失败的协议
-protocol RequestUnAuthorisedProcess: NSObjectProtocol {
+public protocol RequestUnAuthorisedProcess: NSObjectProtocol {
     func register(unAuthorisedProcessor: RequestUnAuthorisedProcess)
     func processUnAuthorisedResponse(_ response: RequestResponse?, message: String?) -> Result<Moya.Response, MoyaError>?
 }
@@ -50,7 +50,7 @@ extension RequestAuthorizationPluginStaticFetchable {
 }
 
 extension RequestAuthorizationPluginUpdate {
-    func updatePlugin(token: String?) {
+    public func updatePlugin(token: String?) {
         if let token = token {
             RequestAuthorizationPlugin.default.token = tokenPrefix + token
         } else {
