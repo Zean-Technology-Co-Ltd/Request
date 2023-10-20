@@ -32,7 +32,7 @@ public protocol RequestUnAuthorisedProcess: NSObjectProtocol {
     func processUnAuthorisedResponse(_ response: RequestResponse?, message: String?) -> Result<Moya.Response, MoyaError>?
 }
 
-extension AccessTokenAuthorizable {
+public extension AccessTokenAuthorizable {
     var tokenExpiredToLogin: Bool {
         return true
     }
