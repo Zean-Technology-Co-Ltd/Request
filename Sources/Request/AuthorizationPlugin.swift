@@ -61,7 +61,7 @@ extension RequestUnAuthorisedProcess {
 }
 
 /// 负责http的验证以及处理http无权限的问题（Authorization过期或非法）
-public final class RequestAuthorizationPlugin: PluginType, RequestAuthorizationPluginUpdate {
+public final class RequestAuthorizationPlugin: PluginType, RequestAuthorizationTokenUpdate {
     
     static let `default` = RequestAuthorizationPlugin()
 
