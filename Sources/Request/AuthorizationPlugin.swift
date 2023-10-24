@@ -15,7 +15,7 @@ public typealias RequestResponse = Moya.Response
 public protocol AccessTokenAuthorizable {
     var shouldAuthorize: Bool { get }
     var tokenExpiredToLogin: Bool { get }
-    var userToken: String? { get }
+    var userToken: String? { get set }
 }
 
 public protocol RequestAuthorizationPluginStaticFetchable {
