@@ -33,9 +33,9 @@ public protocol RequestUnAuthorisedProcess: NSObjectProtocol {
 }
 
 public extension AccessTokenAuthorizable {
-    var tokenExpiredToLogin: Bool {
-        return true
-    }
+    var shouldAuthorize: Bool { return true }
+    
+    var tokenExpiredToLogin: Bool { return true }
     
     func updateToken(_ token: String?) {
         RequestAuthorizationPlugin.default.token = token
