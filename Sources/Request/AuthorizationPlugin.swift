@@ -15,7 +15,7 @@ public typealias RequestResponse = Moya.Response
 public protocol AccessTokenAuthorizable {
     var shouldAuthorize: Bool { get }
     var tokenExpiredToLogin: Bool { get }
-    var userToken: String? { get set }
+    func updateToken(_ token: String?)
 }
 
 public protocol RequestAuthorizationPluginStaticFetchable {
@@ -41,8 +41,8 @@ public extension AccessTokenAuthorizable {
         return true
     }
     
-    var userToken: String? {
-        return nil
+    func updateToken(_ token: String?) {
+        RequestAuthorizationPlugin.default.token = token
     }
 }
 
@@ -73,7 +73,7 @@ extension RequestUnAuthorisedProcess {
 public final class RequestAuthorizationPlugin: PluginType, RequestAuthorizationPluginUpdate {
     
     static let `default` = RequestAuthorizationPlugin()
-    
+
     weak var unAuthorisedProcesser: RequestUnAuthorisedProcess?
     var token: String?
 //    var refreshAction: Observable<TokenResponseModel?>?
