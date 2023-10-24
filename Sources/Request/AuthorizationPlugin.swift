@@ -33,6 +33,10 @@ public protocol RequestUnAuthorisedProcess: NSObjectProtocol {
 }
 
 public extension AccessTokenAuthorizable {
+    var shouldAuthorize: Bool {
+        return true
+    }
+    
     var tokenExpiredToLogin: Bool {
         return true
     }
