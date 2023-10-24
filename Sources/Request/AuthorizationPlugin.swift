@@ -79,7 +79,7 @@ public final class RequestAuthorizationPlugin: PluginType, RequestAuthorizationP
         if let authorizable = target as? AccessTokenAuthorizable,
            authorizable.shouldAuthorize == true {
             if let authVal = token {
-                request.addValue(tokenPrefix + authVal, forHTTPHeaderField: "Authorization")
+                request.addValue(authVal, forHTTPHeaderField: "Authorization")
             }
         }
         request.timeoutInterval = 30
