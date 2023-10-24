@@ -15,15 +15,14 @@ public typealias RequestResponse = Moya.Response
 public protocol AccessTokenAuthorizable {
     var shouldAuthorize: Bool { get }
     var tokenExpiredToLogin: Bool { get }
-    func updateToken(_ token: String?)
 }
 
 public protocol RequestAuthorizationPluginStaticFetchable {
     var authorizationPlugin: RequestAuthorizationPlugin { get }
 }
 
-public protocol RequestAuthorizationPluginUpdate {
-    func updatePlugin(token: String?)
+public protocol RequestAuthorizationTokenUpdate {
+    func updateToken(_ token: String?)
 }
 
 /// 外部处理认证失败的协议
@@ -36,10 +35,6 @@ public extension AccessTokenAuthorizable {
     var shouldAuthorize: Bool { return true }
     
     var tokenExpiredToLogin: Bool { return true }
-    
-    func updateToken(_ token: String?) {
-        RequestAuthorizationPlugin.default.token = token
-    }
 }
 
 /// 提供默认实现方法
@@ -49,8 +44,8 @@ extension RequestAuthorizationPluginStaticFetchable {
     }
 }
 
-extension RequestAuthorizationPluginUpdate {
-    public func updatePlugin(token: String?) {
+extension RequestAuthorizationTokenUpdate {
+    public func updateToken(_ token: String?) {
         if let token = token {
             RequestAuthorizationPlugin.default.token = tokenPrefix + token
         } else {
