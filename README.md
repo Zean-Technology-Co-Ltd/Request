@@ -1,5 +1,4 @@
 # Request
-网络请求
 Swift Package Manager
 Note: Instructions below are for using SwiftPM without the Xcode UI. It's the easiest to go to your Project Settings -> Swift Packages and add Moya from there.
 
